@@ -5,10 +5,12 @@ function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    axios.get("ielp-backend.vercel.app/")
+    axios.get("https://ielp-backend.vercel.app/")
       .then(res => setMessage(res.data))
       .catch(err => console.error(err));
+      console.log(message,"Frontend connected to backend");
   }, []);
+
 
   return <h1>frontend working <br/>{message}</h1>;
 }
