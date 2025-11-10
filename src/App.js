@@ -9,7 +9,7 @@ function App() {
       .then(res => setMessage(res.data))
       .catch(err => console.error(err));
       console.log(message,"Frontend connected to backend");
-  }, []);
+  }, [message]);
 
 
   return <h1>frontend working <br/>{message}</h1>;
