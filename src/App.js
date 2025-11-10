@@ -10,7 +10,7 @@ function App() {
       .catch(err => console.error(err));
   }, []);
 
-  return <h1>{message}</h1>;
+  return <h1>frontend working <br/>{message}</h1>;
 }
 
 export default App;
