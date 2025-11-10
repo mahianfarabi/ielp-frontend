@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import LoadingScreen from "./pages/LoadingScreen";
 
 function App() {
-  const [message, setMessage] = useState("");
+ const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    axios.get("https://ielp-backend.vercel.app/")
-      .then(res => setMessage(res.data))
-      .catch(err => console.error(err));
-      console.log(message,"Frontend connected to backend");
-  }, [message]);
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000); // Stop loading after 2 seconds for demo
+    }, []);
 
-
-  return <h1>frontend working <br/>{message}</h1>;
+    return (
+        <div className="App">
+            {isLoading ? (
+                <LoadingScreen />
+            ) : (
+                <h1>Development running...</h1>
+            )}
+        </div>
+    );
 }
 
 export default App;

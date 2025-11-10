@@ -1,0 +1,49 @@
+/* Using the CSS variables defined in the JSX file's style prop */
+:root {
+  --animation-duration: 0.6s;
+  /* Use your actual serif font here */
+  --font-family: 'Georgia', serif; 
+}
+
+.loader-container {
+    /* Full screen overlay */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #C9D6DD; /* Ensure the background is solid */
+    z-index: 9999; /* Ensure it covers everything */
+}
+
+.logo-loader {
+    font-size: 8rem; 
+    font-family: var(--font-family);
+    /* Color is inherited from the inline style in the JSX component */
+}
+
+.letter {
+    display: inline-block; /* Crucial for applying transform/animation */
+    opacity: 0; /* Start invisible */
+    
+    /* Apply the keyframes animation */
+    /* var(--delay) comes from the inline style={{'--delay': ...}} in the JSX */
+    animation: ripple-in var(--animation-duration) var(--delay) ease-out forwards;
+}
+
+/* * Keyframes for the Ripple effect:
+ * Letters start slightly below and invisible, then rise and fade in.
+ */
+@keyframes ripple-in {
+    0% {
+        opacity: 0;
+        transform: translateY(10px); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); 
+    }
+}
